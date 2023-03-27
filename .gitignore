@@ -42,3 +42,17 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+*.g.dart
+*.lock
+ios/Flutter/flutter_export_environment.sh
+*.pem
+
+# Xcode
+/ios/Runner.xcodeproj/**/contents.xcworkspacedata
+/ios/Runner.xcodeproj/**/WorkspaceSettings.xcsettings
+/ios/Runner.xcodeproj/**/Runner.xcscheme
+IDEWorkspaceChecks.plist
+/android/app/google-services.json
+settings_aar.gradle
+/ios/build/
