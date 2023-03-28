@@ -5,22 +5,12 @@ import 'package:social_app/modules/models/category.dart';
 import 'package:social_app/modules/models/post.dart';
 import 'package:social_app/modules/widgets/post_item.dart';
 
-class ListCategoriesPage extends StatefulWidget {
-  const ListCategoriesPage({Key? key}) : super(key: key);
+class ListCategoriesPage extends StatelessWidget {
+  ListCategoriesPage({Key? key}) : super(key: key);
 
-  @override
-  _ListCategoriesPageState createState() => _ListCategoriesPageState();
-}
-
-class _ListCategoriesPageState extends State<ListCategoriesPage> {
   final _categoryBloc = ListCategoresBloc();
 
-  @override
-  void initState() {
-    super.initState();
-    _categoryBloc.getCategories();
-  }
-
+  // @override
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +19,9 @@ class _ListCategoriesPageState extends State<ListCategoriesPage> {
       ),
       floatingActionButton: FloatingActionButton(
         child: _buildLogo(),
-        onPressed: () {},
+        onPressed: () {
+          _categoryBloc.getCategories();
+        },
       ),
       body: StreamBuilder<List<Category>?>(
         stream: _categoryBloc.postsStream,
