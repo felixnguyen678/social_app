@@ -41,11 +41,7 @@ class _ListCategoriesPageState extends State<ListCategoriesPage> {
               itemBuilder: (_, int index) {
                 final item = categories![index];
                 final name = item.title;
-                final id = item.id ?? '';
-                return Text(
-                  '$name',
-                  key: Key(id),
-                );
+                return Text('$name');
               },
               itemCount: categories?.length ?? 0,
             );
