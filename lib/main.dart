@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:social_app/modules/pages/list_categories_page.dart';
 import 'package:social_app/modules/pages/list_posts_page.dart';
 
 void main() {
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const ListPostsPage(),
+      home: const ListCategoriesPage(),
     );
   }
 }
