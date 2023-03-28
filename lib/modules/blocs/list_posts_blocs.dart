@@ -1,5 +1,5 @@
 import 'package:social_app/modules/models/post.dart';
-import 'package:social_app/modules/providers/bloc_provider.dart';
+import 'package:social_app/providers/bloc_provider.dart';
 import 'package:social_app/modules/repos/repos/list_posts_repo.dart';
 import 'package:rxdart/rxdart.dart';
 
