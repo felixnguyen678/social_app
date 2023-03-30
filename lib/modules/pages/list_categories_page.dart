@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:social_app/modules/blocs/list_categories_bloc.dart';
-import 'package:social_app/modules/blocs/list_posts_bloc.dart';
 import 'package:social_app/modules/models/category.dart';
-import 'package:social_app/modules/models/post.dart';
-import 'package:social_app/modules/widgets/post_item.dart';
 
 class ListCategoriesPage extends StatelessWidget {
   ListCategoriesPage({Key? key}) : super(key: key);
@@ -23,12 +21,10 @@ class ListCategoriesPage extends StatelessWidget {
           _categoryBloc.getCategories();
         },
       ),
-      body: StreamBuilder<List<Category>?>(
-        stream: _categoryBloc.postsStream,
-        builder: (context, snapshot) {
-          print('snapshot ${snapshot.data}');
-          if (snapshot.hasData) {
-            final categories = snapshot.data;
+      body: BlocBuilder<ListCategoresBloc, List<Category>?>(
+        bloc: _categoryBloc,
+        builder: (context, categories) {
+          if (categories != null) {
             return ListView.builder(
               itemBuilder: (_, int index) {
                 final item = categories![index];
@@ -38,11 +34,11 @@ class ListCategoriesPage extends StatelessWidget {
               itemCount: categories?.length ?? 0,
             );
           }
-          if (snapshot.hasError) {
-            return Center(
-              child: Text(snapshot.error.toString()),
-            );
-          }
+          // if (snapshot.hasError) {
+          //   return Center(
+          //     child: Text(snapshot.error.toString()),
+          //   );
+          // }
           return const Center(
             child: CircularProgressIndicator(),
           );
