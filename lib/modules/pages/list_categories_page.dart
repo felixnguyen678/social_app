@@ -18,7 +18,7 @@ class ListCategoriesPage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: _buildLogo(),
         onPressed: () {
-          _categoryBloc.getCategories();
+          _categoryBloc.add('getCategories');
         },
       ),
       body: BlocBuilder<ListCategoresBloc, List<Category>?>(

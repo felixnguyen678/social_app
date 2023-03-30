@@ -10,6 +10,12 @@ class ChattyBlocObserver extends BlocObserver {
   }
 
   @override
+  void onEvent(Bloc bloc, Object? event) {
+    super.onEvent(bloc, event);
+    debugPrint('${bloc.runtimeType}.onEvent event=$event');
+  }
+
+  @override
   void onChange(BlocBase bloc, Change change) {
     super.onChange(bloc, change);
     debugPrint('${bloc.runtimeType}.onChange change=$change');
