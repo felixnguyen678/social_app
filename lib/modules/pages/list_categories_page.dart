@@ -6,7 +6,7 @@ import 'package:social_app/modules/models/category.dart';
 class ListCategoriesPage extends StatelessWidget {
   ListCategoriesPage({Key? key}) : super(key: key);
 
-  final _categoryBloc = ListCategoresBloc();
+  final _categoryBloc = ListCategoriesBloc();
 
   // @override
   @override
@@ -21,9 +21,10 @@ class ListCategoriesPage extends StatelessWidget {
           _categoryBloc.add('getCategories');
         },
       ),
-      body: BlocBuilder<ListCategoresBloc, List<Category>?>(
+      body: BlocBuilder<ListCategoriesBloc, ListCategoriesState>(
         bloc: _categoryBloc,
-        builder: (context, categories) {
+        builder: (context, state) {
+          final categories = state.categories;
           if (categories != null) {
             return ListView.builder(
               itemBuilder: (_, int index) {
@@ -34,11 +35,14 @@ class ListCategoriesPage extends StatelessWidget {
               itemCount: categories?.length ?? 0,
             );
           }
-          // if (snapshot.hasError) {
-          //   return Center(
-          //     child: Text(snapshot.error.toString()),
-          //   );
-          // }
+
+          final error = state.error;
+          if (error != null) {
+            return Center(
+              child: Text('$error'),
+            );
+          }
+
           return const Center(
             child: CircularProgressIndicator(),
           );
