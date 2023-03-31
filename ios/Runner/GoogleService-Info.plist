@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>480532802568-hrplqdg53dmj4qmvcqbva4ucn8s8itpv.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.480532802568-hrplqdg53dmj4qmvcqbva4ucn8s8itpv</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBz0Yj1rqNBvgWcVKk33UjUvb_OkN5wN5A</string>
+	<key>GCM_SENDER_ID</key>
+	<string>480532802568</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>thaison.studio.socialApp</string>
+	<key>PROJECT_ID</key>
+	<string>social-app-5cdb4</string>
+	<key>STORAGE_BUCKET</key>
+	<string>social-app-5cdb4.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:480532802568:ios:ee0f5a6a434c5fa6e2b5bd</string>
+</dict>
+</plist>
