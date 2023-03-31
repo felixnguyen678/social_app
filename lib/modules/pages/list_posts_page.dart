@@ -63,7 +63,6 @@ class _ListPostsPageState extends State<ListPostsPage> {
   }
 
   Widget _buildLogo(){
-    print('_buildLogo ------- build');
     return SizedBox(
       width: 64,
       height: 64,

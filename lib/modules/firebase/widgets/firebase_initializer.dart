@@ -16,7 +16,7 @@ class FirebaseInitializer extends StatefulWidget {
 
 class _FirebaseState extends State<FirebaseInitializer> {
   final Future<FirebaseApp> _initialization = Firebase.initializeApp(
-    name: 'social-app',
+    // name: 'social-app',
     options: DefaultFirebaseOptions.currentPlatform
   );
 

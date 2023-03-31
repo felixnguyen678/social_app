@@ -22,15 +22,12 @@ class ListCategoriesBloc extends Bloc<String, ListCategoriesState> {
     on<String>((event, emit) async {
       switch (event) {
         case 'getCategories':
-          debugPrint('ahihi');
           try {
             final res = await ListCategoriesRepo().getCategories();
-            debugPrint('$res');
             if (res != null) {
               emit(ListCategoriesState(categories: res));
             }
           } catch (e) {
-            debugPrint('$e');
             emit(ListCategoriesState(error: e));
           }
           break;

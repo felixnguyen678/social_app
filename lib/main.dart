@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:social_app/modules/authentication/pages/login_page.dart';
 import 'package:social_app/modules/blocs/chatty_bloc_observer.dart';
 import 'package:social_app/modules/firebase/widgets/firebase_initializer.dart';
 import 'package:social_app/modules/pages/list_categories_page.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ListCategoriesPage(),
+      home: const LoginPage(),
     );
   }
 }
