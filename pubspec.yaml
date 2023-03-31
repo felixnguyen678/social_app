@@ -18,6 +18,7 @@ dependencies:
   flutter_bloc: ^8.1.2
   bloc_concurrency: ^0.2.1
   firebase_core: ^2.9.0
+  firebase_auth: ^4.4.0
 
 dev_dependencies:
   flutter_test:
