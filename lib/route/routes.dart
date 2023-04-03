@@ -2,17 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:social_app/modules/authentication/pages/welcome_page.dart';
 import 'package:social_app/modules/dashboard/pages/dashboard_page.dart';
 import 'package:social_app/modules/posts/blocs/list_posts_rxdart_bloc.dart';
-import 'package:social_app/modules/posts/pages/create_post_page.dart';
 import 'package:social_app/providers/bloc_provider.dart';
 
 class Routes {
   static Route authorizedRoute(RouteSettings settings) {
     switch (settings.name) {
       case '/':
-        return _buildRoute(
-          settings,
-          CreatePostPage(),
-        );
+        // return _buildRoute(
+        //   settings,
+        //   const CreatePostPage(),
+        // );
         return _buildRoute(
           settings,
           BlocProvider(

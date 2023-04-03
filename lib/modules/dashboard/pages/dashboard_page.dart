@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:social_app/blocs/app_state_bloc.dart';
+import 'package:social_app/modules/dashboard/widgets/post_item_2.dart';
 import 'package:social_app/modules/posts/blocs/list_posts_rxdart_bloc.dart';
 import 'package:social_app/modules/posts/models/post.dart';
-import 'package:social_app/modules/posts/widgets/post_item.dart';
 import 'package:social_app/providers/bloc_provider.dart';
 
 class DashboardPage extends StatefulWidget {
@@ -43,9 +43,9 @@ class _DashboardPageState extends State<DashboardPage> {
               return ListView.builder(
                 itemBuilder: (_, int index) {
                   final item = posts![index];
-                  return PostItem(
+                  return PostItem2(
                     height: 200,
-                    url: item.images?.first.url ?? '',
+                    item: item,
                     description: item.description!,
                   );
                 },

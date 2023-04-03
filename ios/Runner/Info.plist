@@ -41,6 +41,14 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>App would like to download image to your photo library</string>
+	<key>NSCameraUsageDescription</key>
+    <string>Allows you to take a picture</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Allows you to record a voice</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Allows you to choose a picture</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>CADisableMinimumFrameDurationOnPhone</key>

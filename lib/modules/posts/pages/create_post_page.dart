@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:social_app/common/widgets/stateful/upload/image_upload_group.dart';
+import 'package:social_app/common/widgets/stateful/upload/image_upload_item.dart';
+import 'package:social_app/common/widgets/stateful/upload/upload_group_value.dart';
 import 'package:social_app/common/widgets/stateless/loading_hide_keyboard.dart';
 
 class CreatePostPage extends StatefulWidget {
@@ -13,6 +16,9 @@ class _CreatePostPageState extends State<CreatePostPage> {
   late final TextEditingController _desCtrl;
   late final FocusNode _focusNodeDes;
   bool isLoading = false;
+
+  UploadGroupValue _currentGroupUploadValue =
+      const UploadGroupValue(<ImageUploadItem>[]);
 
   @override
   void initState() {
@@ -64,6 +70,18 @@ class _CreatePostPageState extends State<CreatePostPage> {
                         keyboardType: TextInputType.multiline,
                         textCapitalization: TextCapitalization.sentences,
                       ),
+                    ),
+                    ImageUploadGroup(
+                      isFullGrid: false,
+                      onValueChanged: (UploadGroupValue value) {
+                        setState(() {
+                          _currentGroupUploadValue = value;
+                        });
+                      },
+                      pickImageDone: () {
+                        FocusScope.of(context).unfocus();
+                      },
+                      listImages: [],
                     ),
                   ],
                 ),
