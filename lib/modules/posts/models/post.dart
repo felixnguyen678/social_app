@@ -1,5 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'package:social_app/modules/posts/models/photo.dart';
 import 'package:social_app/modules/posts/models/picture.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'post.g.dart';
 
@@ -20,6 +21,9 @@ class Post {
   @JsonKey(name: 'images', includeIfNull: false)
   final List<Picture>? images;
 
+  @JsonKey(name: 'photos', includeIfNull: false)
+  final List<Photo>? photos;
+
   factory Post.fromJson(Map<String, dynamic> json) => _$PostFromJson(json);
 
   Post({
@@ -28,6 +32,7 @@ class Post {
     this.title,
     this.description,
     this.images,
+    this.photos,
   });
 
   Map<String, dynamic> toJson() => _$PostToJson(this);
