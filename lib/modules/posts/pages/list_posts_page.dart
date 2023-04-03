@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:social_app/modules/blocs/list_posts_bloc.dart';
-import 'package:social_app/modules/posts/models/post.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:social_app/modules/posts/blocs/list_posts_bloc.dart';
 import 'package:social_app/modules/posts/widgets/post_item.dart';
+import 'package:social_app/modules/tags/pages/tag_search_delegate.dart';
 
 class ListPostsPage extends StatefulWidget {
   const ListPostsPage({Key? key}) : super(key: key);
@@ -16,7 +17,7 @@ class _ListPostsPageState extends State<ListPostsPage> {
   @override
   void initState() {
     super.initState();
-    _postsBloc.getPosts();
+    _postsBloc.add('getPosts');
   }
 
   @override
@@ -24,36 +25,39 @@ class _ListPostsPageState extends State<ListPostsPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('List posts page'),
+        actions: [
+          TagSearchDelegate.buildIconButton(_postsBloc),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         child: _buildLogo(),
-        onPressed: (){
-
-        },
+        onPressed: () {},
       ),
-      body: StreamBuilder<List<Post>?>(
-        stream: _postsBloc.postsStream,
-        builder: (context, snapshot) {
-          print('snapshot ${snapshot.data}');
-          if (snapshot.hasData) {
-            final posts = snapshot.data;
+      body: BlocBuilder<ListPostsBloc, ListPostsState>(
+        bloc: _postsBloc,
+        builder: (context, state) {
+          final posts = state.posts;
+          if (posts != null) {
             return ListView.builder(
               itemBuilder: (_, int index) {
-                final item = posts![index];
+                final item = posts[index];
                 return PostItem(
                   height: 200,
                   url: item.images?.first.url ?? '',
                   description: item.description!,
                 );
               },
-              itemCount: posts?.length ?? 0,
+              itemCount: posts.length,
             );
           }
-          if (snapshot.hasError) {
+
+          final error = state.error;
+          if (error != null) {
             return Center(
-              child: Text(snapshot.error.toString()),
+              child: Text(error.toString()),
             );
           }
+
           return const Center(
             child: CircularProgressIndicator(),
           );
@@ -62,11 +66,12 @@ class _ListPostsPageState extends State<ListPostsPage> {
     );
   }
 
-  Widget _buildLogo(){
+  Widget _buildLogo() {
+    // print('_buildLogo ------- build');
     return SizedBox(
       width: 64,
       height: 64,
       child: Image.asset('assets/images/flutter_logo.png'),
     );
-  } 
+  }
 }

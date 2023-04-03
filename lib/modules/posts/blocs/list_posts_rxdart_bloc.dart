@@ -1,10 +1,10 @@
-import 'package:social_app/modules/posts/models/post.dart';
-import 'package:social_app/providers/bloc_provider.dart';
-import 'package:social_app/modules/repos/repos/list_posts_repo.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:social_app/modules/posts/models/post.dart';
+import 'package:social_app/modules/posts/repos/list_posts_repo.dart';
+import 'package:social_app/providers/bloc_provider.dart';
 
-class ListPostsBloc extends BlocBase {
-  final _postsCtrl = BehaviorSubject<List<Post>?>();
+class ListPostsRxDartBloc extends BlocBase {
+  final _postsCtrl = BehaviorSubject<List<Post>?>.seeded(const []);
   Stream<List<Post>?> get postsStream => _postsCtrl.stream;
 
   Future<void> getPosts() async {
@@ -19,5 +19,7 @@ class ListPostsBloc extends BlocBase {
   }
 
   @override
-  void dispose() {}
+  void dispose() {
+    _postsCtrl.close();
+  }
 }

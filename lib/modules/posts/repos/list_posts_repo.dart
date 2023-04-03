@@ -2,12 +2,13 @@ import 'package:dio/dio.dart';
 import 'package:social_app/constants/app_configs.dart';
 import 'package:social_app/modules/posts/models/post.dart';
 
-
-
 class ListPostsRepo {
   Future<List<Post>?> getPosts() async {
     try {
-      final res = await Dio(BaseOptions(baseUrl: AppConfigs.baseUrl)).get(
+      final res = await Dio(BaseOptions(
+              baseUrl: 'https://api.dofhunt.200lab.io',
+              connectTimeout: const Duration(microseconds: 3000)))
+          .get(
         "/v1/posts",
         queryParameters: {'tags': "portrait"},
         options: Options(method: 'get', headers: {
@@ -16,7 +17,7 @@ class ListPostsRepo {
         }),
       );
 
-      if(res.statusCode != 200){
+      if (res.statusCode != 200) {
         return null;
       }
 

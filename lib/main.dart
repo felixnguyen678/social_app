@@ -1,27 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:social_app/modules/authentication/pages/login_page.dart';
-import 'package:social_app/modules/blocs/chatty_bloc_observer.dart';
-import 'package:social_app/modules/firebase/widgets/firebase_initializer.dart';
-import 'package:social_app/modules/pages/list_categories_page.dart';
-import 'package:social_app/modules/pages/list_posts_page.dart';
+import 'package:social_app/app.dart';
 
-void main() {
+import 'common/blocs/chatty_bloc_observer.dart';
+import 'common/settings/settings_controller.dart';
+import 'common/settings/settings_service.dart';
+import 'modules/firebase/widgets/firebase_initializer.dart';
+
+void main() async {
+  final settingsController = SettingsController(SettingsService());
+
+  await settingsController.loadSettings();
+
   Bloc.observer = ChattyBlocObserver();
-  runApp(const FirebaseInitializer(child: MyApp()));
-}
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  runApp(
+    MyApp(),
+  );
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const LoginPage(),
-    );
-  }
 }

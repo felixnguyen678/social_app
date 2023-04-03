@@ -1,5 +1,5 @@
-import 'package:social_app/modules/models/picture.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:social_app/modules/posts/models/picture.dart';
 
 part 'post.g.dart';
 
@@ -30,6 +30,5 @@ class Post {
     this.images,
   });
 
-  @override
   Map<String, dynamic> toJson() => _$PostToJson(this);
 }
