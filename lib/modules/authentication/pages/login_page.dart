@@ -40,6 +40,8 @@ class LoginPage extends StatelessWidget {
       idToken: googleAuth?.idToken,
     );
 
+    debugPrint("$credential");
+
     // Once signed in, return the UserCredential
     return await FirebaseAuth.instance.signInWithCredential(credential);
   }
