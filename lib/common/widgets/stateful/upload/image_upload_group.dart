@@ -148,6 +148,7 @@ class _ImageUploadGroupState extends State<ImageUploadGroup> {
               onDelete: () => removeImage(index),
               showDeleteButton: true,
               // child: image.placeHolder,
+              placeholder: image.placeHolder,
             ),
           ),
         ),
@@ -312,7 +313,7 @@ class _ImageUploadGroupState extends State<ImageUploadGroup> {
 
       formData = FormData.fromMap({
         'file': MultipartFile.fromBytes(originData.buffer.asUint8List(),
-            filename: "${DateTime.now().millisecondsSinceEpoch}"),
+            filename: "${DateTime.now().millisecondsSinceEpoch}.jpg"),
         'folder': widget.folder,
       });
 
