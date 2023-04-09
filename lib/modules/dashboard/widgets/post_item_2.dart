@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:social_app/modules/posts/models/post.dart';
+import 'package:social_app/modules/posts/widgets/grid_image.dart';
 
 class PostItem2 extends StatefulWidget {
-  final double height;
-  final Post item;
-  final String description;
+  final double? height;
+  final Post? item;
+  final String? description;
 
   const PostItem2({
     Key? key,
-    required this.height,
-    required this.item,
-    required this.description,
+    this.height,
+    this.item,
+    this.description,
   }) : super(key: key);
 
   @override
@@ -18,8 +19,8 @@ class PostItem2 extends StatefulWidget {
 }
 
 class _PostItem2State extends State<PostItem2> {
-  late double _height;
-  late Post _item;
+  late double? _height;
+  late Post? _item;
 
   @override
   void initState() {
@@ -46,12 +47,14 @@ class _PostItem2State extends State<PostItem2> {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 12),
             child: Text(
-              widget.description,
+              widget.description ?? '',
               style: const TextStyle(color: Colors.white, fontSize: 16),
             ),
           ),
 
-          // GridImage()
+          GridImage(
+            photos: _item != null ? _item!.photos ?? [] : [],
+          )
         ],
       ),
     );

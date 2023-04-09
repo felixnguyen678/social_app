@@ -44,7 +44,7 @@ class _DashboardPageState extends State<DashboardPage> {
                 itemBuilder: (_, int index) {
                   final item = posts![index];
                   return PostItem2(
-                    height: 200,
+                    // height: 200,
                     item: item,
                     description: item.description!,
                   );

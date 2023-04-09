@@ -18,7 +18,7 @@ class Photo {
   @JsonKey(name: 'description', includeIfNull: false)
   final String? description;
 
-  @JsonKey(name: 'value', includeIfNull: false)
+  @JsonKey(name: 'image', includeIfNull: false)
   final Picture? image;
 
   @JsonKey(name: 'comment_counts', includeIfNull: false)
