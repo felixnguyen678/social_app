@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:multi_image_picker2/multi_image_picker2.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:social_app/common/widgets/stateful/upload/image_upload_item.dart';
 import 'package:social_app/common/widgets/stateful/upload/upload_group_state_ctrl.dart';
 import 'package:social_app/common/widgets/stateful/upload/upload_group_value.dart';
@@ -210,12 +211,14 @@ class _ImageUploadGroupState extends State<ImageUploadGroup> {
     List<Asset> resultList = <Asset>[];
     var localListImg = <ImageUploadItem>[];
 
-    // PermissionStatus permission =
-    // await PermissionHandler().checkPermissionStatus(PermissionGroup.photos);
-    // if (permission != PermissionStatus.granted) {
-    //   bool ok = await RequestPermission(context).photo();
-    //   if (!ok) return;
-    // }
+      final currentStatus = await Permission.photos.status;
+
+    if (currentStatus == PermissionStatus.denied ||
+        currentStatus == PermissionStatus.restricted) {
+      await Permission.photos.request();
+    } else if (currentStatus == PermissionStatus.permanentlyDenied) {
+      openAppSettings();
+    } 
 
     try {
       resultList = await MultiImagePicker.pickImages(
