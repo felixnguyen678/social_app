@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:multi_image_picker2/multi_image_picker2.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -264,7 +263,7 @@ class _ImageUploadGroupState extends State<ImageUploadGroup> {
             ImageUploadItem(r, imageName!, placeHolder);
         localListImg.add(imageParam);
 
-//        uploadImage(imageParam);
+       uploadImage(imageParam);
       }
 
       _lstImageParam = [
@@ -317,7 +316,7 @@ class _ImageUploadGroupState extends State<ImageUploadGroup> {
         'folder': widget.folder,
       });
 
-      var result = await apiProvider.post('/upload', data: formData,
+      var result = await apiProvider.post('/v1/upload', data: formData,
           onSendProgress: (int sent, int total) {
         // strict: don't set process to 1.0 because server need time to
         // handle images

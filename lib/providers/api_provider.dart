@@ -3,9 +3,9 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:social_app/config_env.dart';
+import 'package:social_app/constants/app_configs.dart';
 import 'package:social_app/providers/log_provider.dart';
 import 'package:social_app/resource/token_manager.dart';
-
 
 // Must be top-level function
 dynamic _parseAndDecode(String response) {
@@ -16,7 +16,8 @@ class ApiProvider {
   late Dio _dio;
 
   String? get _accessToken {
-    return TokenManager().accessToken;
+    //return TokenManager().accessToken;
+    return AppConfigs.userToken;
   }
 
   static final ApiProvider _instance = ApiProvider._internal();
@@ -112,6 +113,7 @@ class ApiProvider {
     throw res;
   }
 }
+
 class ErrorResponse implements Exception {
   final String? code;
   final String? log;
