@@ -4,7 +4,7 @@ A new Flutter project.
 
 ## Getting Started
 
-cd to  `model` folders and enter command `flutter pub run build_runner build`
+enter command `flutter pub run build_runner build`
 
 This project is a starting point for a Flutter application.
 
